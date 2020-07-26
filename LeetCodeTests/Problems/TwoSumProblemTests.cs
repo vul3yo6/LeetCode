@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace LeetCode.Problems.Tests
+namespace LeetCodeTests.Problems
 {
     public class TwoSumProblemTests
     {
