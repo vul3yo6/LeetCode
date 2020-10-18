@@ -19,4 +19,16 @@
     <ProjectReference Include="..\LeetCode\LeetCode.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Files\AprioriAlgorithmData">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Files\AprioriAlgorithmSample">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Files\AprioriAlgorithmSample2">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
