@@ -122,7 +122,7 @@ namespace LeetCode.Problems
             }
         }
 
-        private Dictionary<string, AprioriRecord> CalculateSupport(double minSupport)
+        private void CalculateSupport(double minSupport)
         {
             //L(1) = Scan database to find {frequent itemset}  
             //do  
@@ -137,7 +137,7 @@ namespace LeetCode.Problems
             // 已經有資料不重新計算
             if (_resultDict.Count > 0 && _minSupport == minSupport)
             {
-                return _resultDict;
+                return;
             }
 
             _sw.Reset();
@@ -154,8 +154,6 @@ namespace LeetCode.Problems
                 _sw.Stop();
                 _timeDict[nameof(CalculateSupport)] = _sw.Elapsed.TotalMilliseconds;
             }
-
-            return _resultDict;
         }
 
         private void GetSupport(List<ItemKey> itemKeys, double minSupport)
@@ -244,6 +242,10 @@ namespace LeetCode.Problems
     public class ShoppingRecords
     {
         private Dictionary<string, ShoppingRecord> _dataset = new Dictionary<string, ShoppingRecord>();
+        public Dictionary<string, ShoppingRecord> Dataset
+        {
+            get { return new Dictionary<string, ShoppingRecord>(_dataset); }
+        }
 
         public void Add(string transactionId, string itemId)
         {
