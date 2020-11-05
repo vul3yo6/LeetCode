@@ -110,6 +110,12 @@ namespace LeetCode.Problems
 
                 var allIds = boughtItemIds.Concat(forecastItemIds).ToList();
                 var allKey = new ItemKey(allIds);
+
+                if (_resultDict.ContainsKey(allKey.CombinationId) == false)
+                {
+                    return 0;
+                }
+
                 int allCount = _resultDict.ContainsKey(boughtKey.CombinationId) ?
                     _resultDict[allKey.CombinationId].Count : 0;
 
