@@ -19,7 +19,7 @@ namespace LeetCode.Problems
      * Input: l1 = [0], l2 = [0]
      * Output: [0]
      * 
-     * Example 2:
+     * Example 3:
      * Input: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
      * Output: [8,9,9,9,0,0,0,1]
      */
