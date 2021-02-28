@@ -103,5 +103,28 @@ namespace LeetCodeTests.Problems
             // Assert
             Assert.Equal(expected, actual);
         }
+
+        [Fact]
+        public void ThreeSum_Case6()
+        {
+            // Arrange
+            var obj = new ThreeSumProblem();
+            int[] nums = new int[] { -4, -2, -2, -2, 0, 1, 2, 2, 2, 3, 3, 4, 4, 6, 6 };
+            var expected = new List<IList<int>>()
+            {
+                new List<int>() { -4, -2, 6 },
+                new List<int>() { -4, 0, 4 },
+                new List<int>() { -4, 1, 3 },
+                new List<int>() { -4, 2, 2 },
+                new List<int>() { -2, -2, 4 },
+                new List<int>() { -2, 0, 2 },
+            };
+
+            // Act
+            var actual = obj.ThreeSum(nums);
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
     }
 }

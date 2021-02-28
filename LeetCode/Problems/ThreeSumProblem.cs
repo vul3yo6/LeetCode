@@ -39,6 +39,7 @@ namespace LeetCode.Problems
             // 從兩頭開始找, 讓寬度最大; 再比較數值大小, 讓高度最大
             int startIndex = 0;
             int endIndex = nums.Length - 1;
+            bool flag = false;
 
             var result = new HashSet<IList<int>>(new ThreeSumComparer());
             while (startIndex < endIndex - 1)
@@ -48,7 +49,7 @@ namespace LeetCode.Problems
 
                 bool isASC = startNum < endNum;
                 int middleIndex = isASC ? startIndex + 1 : endIndex - 1;
-                var temp = new List<int>();
+                //var temp = new List<int>();
                 while (middleIndex > startIndex && middleIndex < endIndex)
                 {
                     // 起始數值大於 0, 或結尾數值小於 0, 就不可能相加等於 0
@@ -59,10 +60,14 @@ namespace LeetCode.Problems
 
                     if (IsVaildNums(nums[startIndex], nums[middleIndex], nums[endIndex]))
                     {
+                        var temp = new List<int>();
+
                         temp.Add(nums[startIndex]);
                         temp.Add(nums[middleIndex]);
                         temp.Add(nums[endIndex]);
-                        break;
+                        //break;
+
+                        result.Add(temp);
                     }
 
                     //int middleNum = Math.Abs(nums[middleIndex]);
@@ -76,18 +81,29 @@ namespace LeetCode.Problems
                     }
                 }
 
-                if (temp.Count > 0)
-                {
-                    result.Add(temp);
-                }
+                //if (temp.Count > 0)
+                //{
+                //    result.Add(temp);
+                //}
 
-                if (startNum <= endNum)
+                if (flag)
+                {
+                    flag = false;
+                    endIndex++;
+                    startIndex++;
+                }
+                else if (startNum < endNum)
                 {
                     endIndex--;
                 }
-                else
+                else if (startNum > endNum)
                 {
                     startIndex++;
+                }
+                else
+                {
+                    flag = true;
+                    endIndex--;
                 }
             }
 
