@@ -36,7 +36,61 @@ namespace LeetCode.Problems
     {
         public ListNode MergeTwoLists(ListNode l1, ListNode l2)
         {
-            return null;
+            // 排除例外
+            if (l1 == null && l2 == null)
+            {
+                return null;
+            }
+            else if (l1 == null)
+            {
+                return l2;
+            }
+            else if (l2 == null)
+            {
+                return l1;
+            }
+
+            ListNode startNode = null;
+            if (l1.val > l2.val)
+            {
+                startNode = l2;
+                l2 = l2.next;
+            }
+            else
+            {
+                startNode = l1;
+                l1 = l1.next;
+            }
+
+            ListNode node = startNode;
+            while (true)
+            {
+                if (l1 == null)
+                {
+                    node.next = l2;
+                    break;
+                }
+                else if (l2 == null)
+                {
+                    node.next = l1;
+                    break;
+                }
+
+                // 判斷哪一個大, 指標往下移動
+                if (l1.val > l2.val)
+                {
+                    node.next = l2;
+                    l2 = l2.next;
+                    node = node.next;
+                }
+                else
+                {
+                    node.next = l1;
+                    l1 = l1.next;
+                    node = node.next;
+                }
+            }
+            return startNode;
         }
     }
 
